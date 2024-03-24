@@ -2,7 +2,13 @@ import { NextFunction, Request, Response } from "express";
 
 export interface NewUserRequestBody {
   email: string;
-  role: string;
+  password: string;
+  isAdmin: boolean;
+}
+
+export interface AuthUserRequestBody {
+  email: string;
+  password: string;
 }
 
 export type ControllerType = (

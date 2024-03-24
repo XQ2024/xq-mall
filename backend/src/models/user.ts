@@ -1,30 +1,48 @@
-import mongoose from "mongoose";
+import { compare, hash } from "bcrypt";
+import mongoose, { Document } from "mongoose";
 import validator from "validator";
 
 interface IUser extends Document {
   email: string;
-  role: "admin" | "user";
-  createdAt: Date;
-  updatedAt: Date;
+  password: string;
+  isAdmin: boolean;
+  comparePassword: (password: string) => boolean;
 }
 
-const userSchema = new mongoose.Schema(
+const userSchema = new mongoose.Schema<IUser>(
   {
     email: {
       type: String,
-      unique: [true, "Email already exists"],
-      required: [true, "Please enter Email"],
+      required: true,
       validate: validator.default.isEmail,
     },
-    role: {
+    password: {
       type: String,
-      enum: ["admin", "user"],
-      default: "user",
+      required: true,
+    },
+    isAdmin: {
+      type: Boolean,
+      required: true,
+      default: false,
     },
   },
   {
     timestamps: true,
   }
 );
+
+userSchema.pre("save", async function (this: IUser, next) {
+  if (!this.isModified("password")) {
+    return next();
+  }
+  this.password = await hash(this.password, 10);
+  return next();
+});
+
+userSchema.methods.comparePassword = async function (
+  candidatePassword: string
+) {
+  return await compare(candidatePassword, this.password);
+};
 
 export const User = mongoose.model<IUser>("User", userSchema);

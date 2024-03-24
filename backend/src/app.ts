@@ -1,15 +1,15 @@
-import express, { NextFunction, Request, Response } from "express";
+import express from "express";
 
 import userRoute from "./routes/user.js";
 import { connectDB } from "./utils/features.js";
 import { config } from "dotenv";
 import { errorMiddleware } from "./middlewares/error.js";
 
-const port = 4000;
-
 config({
   path: "./.env",
 });
+
+const port = process.env.PORT || 8080;
 
 const mongoURI = process.env.MONGODB_URL || "";
 
