@@ -17,10 +17,8 @@ const Update = () => {
         position: "absolute",
         top: "50%",
         left: "50%",
-        transform: "translate(-50%, -50%)", //将元素的中心定位到其包含块的中心
-        //使用 translate 函数将元素在水平和垂直方向上分别向左和向上移动
+        transform: "translate(-50%, -50%)", 
         boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)", // 添加阴影
-        //阴影的属性包括水平偏移量（0），垂直偏移量（4px），模糊半径（8px），颜色
       }}
     >
       <div style={{ textAlign: "right", marginRight: "5px", marginTop: "5px" }}>
