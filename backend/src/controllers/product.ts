@@ -32,3 +32,29 @@ export const postProduct = TryCatch(async (req: Request, res: Response) => {
   await product.save();
   res.status(201).json({ message: "Product created successfully" });
 });
+
+export const updateProduct = TryCatch(async (req: Request, res: Response) => {
+  const updateData = req.body;
+  const updatedProduct = await Product.findByIdAndUpdate(
+    req.params.id,
+    updateData,
+    {
+      new: true,
+    }
+  );
+  if (!updatedProduct) {
+    throw new Error("Product not found");
+  }
+
+  res
+    .status(200)
+    .json({ message: "Product updated successfully", product: updatedProduct });
+});
+
+export const deleteProduct = TryCatch(async (req: Request, res: Response) => {
+  const product = await Product.findByIdAndDelete(req.params.id);
+  if (!product) {
+    throw new Error("Product not found");
+  }
+  res.json({ message: "Product deleted" });
+});

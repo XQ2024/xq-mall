@@ -23,8 +23,8 @@ app.get("/", (req, res) => {
   res.send("API working");
 });
 
-app.use("/api/user", userRoutes);
-app.use("/api/product", productRoutes);
+app.use("/api/users", userRoutes);
+app.use("/api/products", productRoutes);
 
 app.use(errorMiddleware);
 
