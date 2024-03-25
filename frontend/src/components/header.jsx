@@ -45,7 +45,6 @@ const AppHeader = () => {
               alignItems: "baseline",
             }}
           >
-            {/* 在底部水平线上对齐 */}
             <div
               style={{
                 fontSize: "20px",
@@ -56,8 +55,6 @@ const AppHeader = () => {
             </div>
             <div style={{ fontSize: "10px", marginLeft: "5px" }}>Chuwa</div>
           </div>
-          {/* <Col flex="auto">  是 Ant Design 中<Col>组件的一个属性设置,作用是让搜索栏（<Search> 组件）占据剩余的空间 */}
-          {/*  flex="auto" 表示这一列的宽度会自动填充剩余的空间 */}
           <div
             className="search-container"
             style={{
