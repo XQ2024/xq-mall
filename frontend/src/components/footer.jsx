@@ -19,7 +19,7 @@ function Footer() {
     handleResize();
 
     // 监听窗口大小变化
-    window.addEventListener("resize", handleResize); //当窗口大小发生变化时，会调用 handleResize 函数, resize 是用于监听的事件名称
+    window.addEventListener("resize", handleResize); 
 
     // 在组件卸载时取消事件监听
     return () => window.removeEventListener("resize", handleResize);
