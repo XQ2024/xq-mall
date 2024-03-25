@@ -1,5 +1,5 @@
 import { compare, hash } from "bcrypt";
-import mongoose, { Document } from "mongoose";
+import { Document, Schema, model } from "mongoose";
 import validator from "validator";
 
 interface IUser extends Document {
@@ -9,7 +9,7 @@ interface IUser extends Document {
   comparePassword: (password: string) => boolean;
 }
 
-const userSchema = new mongoose.Schema<IUser>(
+const userSchema = new Schema<IUser>(
   {
     email: {
       type: String,
@@ -45,4 +45,4 @@ userSchema.methods.comparePassword = async function (
   return await compare(candidatePassword, this.password);
 };
 
-export const User = mongoose.model<IUser>("User", userSchema);
+export const User = model<IUser>("User", userSchema);
