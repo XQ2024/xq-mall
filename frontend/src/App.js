@@ -8,14 +8,13 @@ import Error from "./error/error";
 // import ProtectedRoute from "./protect";
 
 const { Content } = Layout;
-//从 Layout 组件中提取 Content 组件，以便在代码中直接使用它，而不需要每次都写 Layout.Content
 function App() {
   return (
     // <AuthContext.Provider value={{ loggedIn, onLogin: handleLogin }}>
     <Router>
       <Layout>
         <Header />
-        <Content //页面内容垂直居中显示在页面中间
+        <Content 
           style={{
             minHeight: "calc(100vh - 0px - 0px)",
             display: "flex",
