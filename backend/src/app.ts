@@ -2,6 +2,7 @@ import express from "express";
 
 import userRoutes from "./routes/user.js";
 import productRoutes from "./routes/product.js";
+import cartRoutes from "./routes/cart.js";
 import { connectDB } from "./utils/features.js";
 import { config } from "dotenv";
 import { errorMiddleware } from "./middlewares/error.js";
@@ -25,6 +26,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/users", userRoutes);
 app.use("/api/products", productRoutes);
+app.use("/api/carts", cartRoutes);
 
 app.use(errorMiddleware);
 
