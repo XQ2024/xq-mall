@@ -16,9 +16,8 @@ const AuthPage = ({ pageName, onSubmit }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    //状态更新会触发组件重新渲染，但是这些状态更新必须在 React 渲染周期内完成
     if (pageName === "SignIn") {
-      setSlogan("Sign In to your account"); //const 让slogan只在 if 或 else if 语句块内部可见
+      setSlogan("Sign In to your account"); 
       setSubmitText("Sign In");
     } else if (pageName === "SignUp") {
       setSlogan("Sign Up with your account");
@@ -60,12 +59,7 @@ const AuthPage = ({ pageName, onSubmit }) => {
             margin: "auto",
             padding: "20px",
             position: "absolute",
-            // top: "50%",
-            // left: "50%",
-            // transform: "translate(-50%, -50%)", //将元素的中心定位到其包含块的中心
-            //使用 translate 函数将元素在水平和垂直方向上分别向左和向上移动
             boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)", // 添加阴影
-            //阴影的属性包括水平偏移量（0），垂直偏移量（4px），模糊半径（8px），颜色
           }}
         >
           <h2 style={{ textAlign: "center" }}>{slogan}</h2>
@@ -73,8 +67,8 @@ const AuthPage = ({ pageName, onSubmit }) => {
             <Form.Item
               name="email" //作为value key
               rules={[
-                { required: true, message: "Please input your email!" }, //这个规则要求输入不能为空
-                { type: "email", message: "Invalid Email Input!" }, //这个规则要求输入的是一个合法的邮箱
+                { required: true, message: "Please input your email!" }, 
+                { type: "email", message: "Invalid Email Input!" }, 
               ]}
             >
               <div>
@@ -85,9 +79,6 @@ const AuthPage = ({ pageName, onSubmit }) => {
             {pageName !== "Update" && (
               <Form.Item
                 name="password"
-                // label="Password"
-                //   labelCol={{ span: 6 }} // 设置 label 的布局，使其占据较少的空间
-                //   wrapperCol={{ span: 20 }} // 设置 wrapper 的布局，占据剩余的空间
                 rules={[
                   { required: true, message: "Please input your password!" },
                 ]}
