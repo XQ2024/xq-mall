@@ -1,4 +1,5 @@
 import { Document, Schema, model } from "mongoose";
+import { Coupon, ICoupon, couponSchema } from "./coupon.js";
 
 interface ICartItem extends Document {
   productId: Schema.Types.ObjectId;
@@ -10,7 +11,8 @@ interface ICartItem extends Document {
 
 interface ICart extends Document {
   user: Schema.Types.ObjectId;
-  cartItems: [ICartItem];
+  cartItems: ICartItem[];
+  coupons: ICoupon[];
   subtotal: number;
   tax: number;
   discount: number;
@@ -48,6 +50,7 @@ const cartSchema = new Schema<ICart>({
     required: true,
   },
   cartItems: [cartItemSchema],
+  coupons: [couponSchema],
   subtotal: {
     type: Number,
     required: true,
