@@ -57,9 +57,9 @@ export default function Product() {
           >
             <div style={{ display: "flex", justifyContent: "space-between" }}>
               <Button type="primary" onClick={handleAddToCart}>
-                加入购物车
+                Add
               </Button>
-              <Button onClick={handleEditProduct}>编辑</Button>
+              <Button onClick={handleEditProduct}>Edit</Button>
             </div>
           </Card>
         ))}
